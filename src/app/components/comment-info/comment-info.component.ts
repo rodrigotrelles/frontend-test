@@ -1,6 +1,6 @@
+import { IComment } from './../../interfaces/comment.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IComment } from 'src/app/interfaces/comment.model';
 import { CommentsService } from 'src/app/services/comments.service';
 import { Subscription } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class CommentInfoComponent implements OnInit {
   public comment: IComment;
+  private getCommentsEndSourceSubs: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,16 +20,13 @@ export class CommentInfoComponent implements OnInit {
 
   ngOnInit() {
     this.getCommentData();
+    this.getCommentsEndSourceSubs = this.commentsService.getCommentsEnd$.subscribe(result => {
+      this.getCommentData();
+    });
   }
 
   private getCommentData(): void {
     const commentId = +this.route.snapshot.paramMap.get('id');
     this.commentsService.getCommentById(commentId);
-
-    this.commentsService.currentComment$.subscribe(result => {
-      this.comment = result;
-
-      console.log(this.comment)
-    })
   }
 }

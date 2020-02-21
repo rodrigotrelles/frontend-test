@@ -1,14 +1,6 @@
-<ng-container>
-    <a mat-button routerLink="..">
-        <mat-icon>keyboard_backspace</mat-icon>Volver</a>
-    <!-- <h1>{{ comment.name }}</h1>
-    <h2>{{ comment.email }}</h2>
-    <p>{{ comment.body }}</p> -->
-</ng-container>
-
-
-<h1>hi {{ commentsService.currentComment$ | async }}</h1>
-<h1>hi {{ val }}
-</h1>
-
-<!-- <app-comment [comment]="comment" *ngFor="let comment of commentsService.comments$ | async"></app-comment> -->
+<a mat-button routerLink="..">
+    <mat-icon>keyboard_backspace</mat-icon>Volver
+</a>
+<h1>{{ (commentsService.currentComment$ | async)?.name }}</h1>
+<h2>{{ (commentsService.currentComment$ | async)?.email }}</h2>
+<p>{{ (commentsService.currentComment$ | async)?.body }}</p>

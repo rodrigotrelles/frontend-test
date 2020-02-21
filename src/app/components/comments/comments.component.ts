@@ -11,7 +11,6 @@ export class CommentsComponent implements OnInit {
 
   constructor(public commentsService: CommentsService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

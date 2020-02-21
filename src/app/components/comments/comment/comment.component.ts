@@ -13,4 +13,11 @@ export class CommentComponent implements OnInit {
 
   ngOnInit() {}
 
+  showName() {
+    return this.comment.name.length <= 20 ? this.comment.name : `${this.comment.name.substring(0, 20)}...`;
+  }
+
+  showBody() {
+    return this.comment.body.length <= 30 ? this.comment.body : `${this.comment.body.substring(0, 30)}...`;
+  }
 }
