@@ -1,0 +1,3 @@
+<ng-container>
+    <app-comment [comment]="comment" *ngFor="let comment of commentsService.comments$ | async"></app-comment>
+</ng-container>

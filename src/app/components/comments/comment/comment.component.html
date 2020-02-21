@@ -1,0 +1,17 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>{{ comment.name }}</mat-card-title>
+        <mat-card-subtitle>{{ comment.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            {{ comment.body }}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-button [routerLink]="[comment.id]" routerLinkActive="router-link-active">
+            <span class="text">Ver más</span>
+            <mat-icon>keyboard_backspace</mat-icon>
+        </a>
+    </mat-card-actions>
+</mat-card>
