@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './comment-info.component.html',
   styleUrls: ['./comment-info.component.scss']
 })
-export class CommentInfoComponent implements OnInit {
+export class CommentInfoComponent implements OnInit, OnDestroy {
   public comment: IComment;
   private getCommentsEndSourceSubs: Subscription;
 
@@ -28,5 +28,9 @@ export class CommentInfoComponent implements OnInit {
   private getCommentData(): void {
     const commentId = +this.route.snapshot.paramMap.get('id');
     this.commentsService.getCommentById(commentId);
+  }
+
+  ngOnDestroy() {
+    this.getCommentsEndSourceSubs.unsubscribe();
   }
 }
