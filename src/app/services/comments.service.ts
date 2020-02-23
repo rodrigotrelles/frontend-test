@@ -29,7 +29,11 @@ export class CommentsService {
     this.http.get<IComment[]>(environment.api).subscribe((comments: IComment[]) => {
       this.commentsSource.next(comments);
       this.getCommentsEndSource.next();
-      this.loaderSource.next(false);
+
+      // Timeout added to simulate a real case of an api call
+      setTimeout(() => {
+        this.loaderSource.next(false);
+      }, 1000);
     });
   }
 
