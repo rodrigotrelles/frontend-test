@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentsService } from './services/comments.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private commentsService: CommentsService) { }
+
+  constructor(
+    private commentsService: CommentsService
+  ) { }
 
   ngOnInit() {
     this.commentsService.getComments();

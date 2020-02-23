@@ -11,6 +11,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentInfoComponent } from './components/comment-info/comment-info.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CommentInfoComponent } from './components/comment-info/comment-info.com
     CommentComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    CommentInfoComponent
+    CommentInfoComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

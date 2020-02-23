@@ -4,3 +4,5 @@
 <h1>{{ (commentsService.currentComment$ | async)?.name }}</h1>
 <h2>{{ (commentsService.currentComment$ | async)?.email }}</h2>
 <p>{{ (commentsService.currentComment$ | async)?.body }}</p>
+
+<app-spinner *ngIf="commentsService.isLoading$ | async"></app-spinner>

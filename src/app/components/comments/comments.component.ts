@@ -7,10 +7,16 @@ import { Subscription } from 'rxjs';
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss']
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnInit, OnDestroy {
 
-  constructor(public commentsService: CommentsService) { }
+  constructor(
+    public commentsService: CommentsService,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+  }
 
 }

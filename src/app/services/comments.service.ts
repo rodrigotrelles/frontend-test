@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
-import { map as lodashMap } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +17,19 @@ export class CommentsService {
   private currentCommentSource = new BehaviorSubject<IComment>(null);
   public currentComment$ = this.currentCommentSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  private loaderSource = new BehaviorSubject<boolean>(false);
+  public isLoading$ = this.loaderSource.asObservable();
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   public getComments(): void {
+    this.loaderSource.next(true);
     this.http.get<IComment[]>(environment.api).subscribe((comments: IComment[]) => {
       this.commentsSource.next(comments);
       this.getCommentsEndSource.next();
+      this.loaderSource.next(false);
     });
   }
 

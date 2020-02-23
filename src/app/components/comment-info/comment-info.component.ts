@@ -28,6 +28,7 @@ export class CommentInfoComponent implements OnInit, OnDestroy {
   private getCommentData(): void {
     const commentId = +this.route.snapshot.paramMap.get('id');
     this.commentsService.getCommentById(commentId);
+
   }
 
   ngOnDestroy() {
